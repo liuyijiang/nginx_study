@@ -1,0 +1,35 @@
+#实现nginx 图片裁剪                
+使用nginx自带模块 ngx_http_image_filter_module（http://nginx.org/cn/docs/http/ngx_http_image_filter_module.html）
+1 安装模块
+  configure --with-http_image_filter_module
+  需要安装gd依赖
+   yum install gd-devel （centos）
+   apt-get install libgd2-xpm libgd2-xpm-dev (ubuntu)
+   
+  完成安装配置nginx.conf
+  location ~* /img/resize/(.*)_(\d*)x(\d*)/(.*) {  //使用正则表达式匹配
+              alias /home/liuyj/imagenew/$1/$4; //$1 第一个参数 
+              image_filter crop $2 $3;
+  }
+  // 总结 正则匹配(.*)匹配任何字符串  (\d*)匹配任何数字
+  语法: 	image_filter off;
+  image_filter test;
+  image_filter size;
+  image_filter rotate 90 | 180 | 270; // 将图像逆时针旋转指定角度。 参数的值可以包含变量。 可以单独使用，或与 resize 和 crop 变换同时使用. 
+  image_filter resize width height; // 按比例缩小图像至指定大小
+  image_filter crop width height; // 按比例以图像的最短边为准对图像大小进行缩小
+  默认值: 	—
+  上下文: 	location
+
+2 补充 nginx location 匹配
+= 开头表示精确匹配
+
+^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。
+
+~ 开头表示区分大小写的正则匹配
+
+~*  开头表示不区分大小写的正则匹配
+
+!~和!~*分别为区分大小写不匹配及不区分大小写不匹配 的正则
+
+/ 通用匹配，任何请求都会匹配到。
