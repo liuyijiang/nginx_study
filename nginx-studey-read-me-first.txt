@@ -1,2 +1,2 @@
-nginx ѧϰ�ս�  http://nginx.org/cn/docs/
-����ģ�� �Ὠһ��������txt
+nginx 学习总结 http://nginx.org/cn/docs/
+每一个模块一个txt
