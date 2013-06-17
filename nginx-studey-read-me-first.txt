@@ -1,2 +1,2 @@
-nginx 学习终结 
-各个模块 会建一个单独的txt
+nginx 学习锟秸斤拷  http://nginx.org/cn/docs/
+锟斤拷锟斤拷模锟斤拷 锟结建一锟斤拷锟斤拷锟斤拷锟斤拷txt
