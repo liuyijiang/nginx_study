@@ -1,0 +1,4 @@
+ngx_http_rewrite_module 默认安装
+需要pcre包依赖
+1 ubuntu 上 apt-get install libpcre3 libpcre3-dev
+2 centos 上
