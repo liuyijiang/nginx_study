@@ -1,1 +1,2 @@
-ngx_http_gzip_static_module
+ngx_http_gzip_static_module 安装依赖 zlib
+1 ubuntu 上 apt-get install zlib1g-dev 
