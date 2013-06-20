@@ -7,10 +7,21 @@
    apt-get install libgd2-xpm libgd2-xpm-dev (ubuntu)
    
   完成安装配置nginx.conf
+  访问url:http://192.168.1.212:20080/img/resize/112_600x600/x0.jpg
   location ~* /img/resize/(.*)_(\d*)x(\d*)/(.*) {  //使用正则表达式匹配
               alias /home/liuyj/imagenew/$1/$4; //$1 第一个参数 
               image_filter crop $2 $3;
   }
+  
+  访问url: http://192.168.2.64/img/resize/v27.jpg?500x500
+   location /img/resize/ {         
+              if ( $request_uri ~*  (.*)\?(\d*)x(\d*) ) { }
+              alias /image/user/;
+               image_filter crop $2 $3;
+  }
+
+  
+  
   // 总结 正则匹配(.*)匹配任何字符串  (\d*)匹配任何数字
   语法: 	image_filter off;
   image_filter test;
