@@ -1,0 +1,28 @@
+nginx-gridfs 模块配置
+1nginx的一些通用依赖包安装
+ apt-get install zlib1g-dev        
+ apt-get install libpcre3 libpcre3-dev
+ apt-get install openssl libssl-dev
+ 
+2git安装
+ apt-get install git git-core
+ 下载源码
+ git xlone https://github.com/mdirolf/nginx-gridfs.git
+ cd nginx-gridfs
+ git submodule init
+ git submodule update
+ 
+3nginx模块添加
+  ./configure --add-module=<nginx-gridfs的路径> 
+
+ 如果编译出错加(--with-cc-opt=-Wno-error)
+ 
+4nginx配置 
+location /image/ {
+	gridfs mxk （数据库名）
+	root_collection=image （image是文件collection名）
+	field=filename
+	type=string;
+	mongo 127.0.0.1:27017;
+}
+
