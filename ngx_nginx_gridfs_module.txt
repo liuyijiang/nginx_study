@@ -22,6 +22,8 @@ location /image/ {
 	gridfs mxk （数据库名）
 	root_collection=image （image是文件collection名）
 	field=filename
+	user=xxxx
+    pass=xxxx
 	type=string;
 	mongo 127.0.0.1:27017;
 }
